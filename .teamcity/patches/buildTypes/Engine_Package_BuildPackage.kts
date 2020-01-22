@@ -1,6 +1,9 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.MSBuildStep
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.msBuild
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -22,6 +25,28 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         }
         add {
             param("XenkoBuildPrerequisitesInstaller", "false")
+        }
+    }
+
+    expectSteps {
+        msBuild {
+            path = """build\Xenko.build"""
+            toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
+            targets = "Package"
+            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll%"""
+        }
+        powerShell {
+            name = "Update build number with actual package version"
+            enabled = false
+            workingDir = "build"
+            scriptMode = script {
+                content = """"##teamcity[buildNumber '{0}']" -f (Get-Content .\Xenko.version) | Write-Host"""
+            }
+        }
+    }
+    steps {
+        update<MSBuildStep>(0) {
+            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller%"""
         }
     }
 }
