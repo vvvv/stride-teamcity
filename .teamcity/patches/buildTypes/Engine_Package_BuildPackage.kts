@@ -26,6 +26,9 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         add {
             param("XenkoBuildPrerequisitesInstaller", "false")
         }
+        add {
+            param("XenkoSign", "false")
+        }
     }
 
     expectSteps {
