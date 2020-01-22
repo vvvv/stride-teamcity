@@ -29,6 +29,7 @@ changeVcsRoot(RelativeId("Xenko")) {
     }
 
     (this as GitVcsRoot).apply {
+        name = "vvvv-stride"
         url = "git@github.com:vvvv/xenko.git"
         authMethod = uploadedKey {
             userName = ""
