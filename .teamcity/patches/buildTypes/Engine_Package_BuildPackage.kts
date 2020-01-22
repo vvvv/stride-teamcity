@@ -52,7 +52,7 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
     }
     steps {
         update<MSBuildStep>(0) {
-            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign%"""
+            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
         }
     }
 }
