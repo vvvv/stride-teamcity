@@ -14,6 +14,14 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
     params {
         expect {
+            checkbox("XenkoGraphicsApiDependentBuildAll", "true", label = "Build all graphics platforms",
+                      checked = "true", unchecked = "false")
+        }
+        update {
+            checkbox("XenkoGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
+                      checked = "true", unchecked = "false")
+        }
+        expect {
             select("XenkoPlatforms", "Windows;Android;UWP;iOS;Linux;macOS", label = "Platforms",
                     allowMultiple = true, valueSeparator = ";",
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
@@ -27,10 +35,10 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             param("XenkoBuildPrerequisitesInstaller", "false")
         }
         add {
-            param("XenkoSign", "false")
+            param("XenkoOfficialBuild", "false")
         }
         add {
-            param("XenkoOfficialBuild", "false")
+            param("XenkoSign", "false")
         }
     }
 
