@@ -20,5 +20,8 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
                     allowMultiple = true, valueSeparator = ";",
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         }
+        add {
+            param("XenkoBuildPrerequisitesInstaller", "false")
+        }
     }
 }
