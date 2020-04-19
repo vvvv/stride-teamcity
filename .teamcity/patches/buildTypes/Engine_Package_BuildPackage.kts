@@ -35,13 +35,8 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             checkbox("XenkoGraphicsApiDependentBuildAll", "true", label = "Build all graphics platforms",
                       checked = "true", unchecked = "false")
         }
-        expect {
+        remove {
             select("XenkoPlatforms", "Windows;Android;UWP;iOS;Linux;macOS", label = "Platforms",
-                    allowMultiple = true, valueSeparator = ";",
-                    options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
-        }
-        update {
-            select("XenkoPlatforms", "Windows", label = "Platforms",
                     allowMultiple = true, valueSeparator = ";",
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         }
@@ -50,6 +45,11 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         }
         add {
             param("XenkoSign", "false")
+        }
+        add {
+            select("StridePlatforms", "Windows", label = "Platforms",
+                    allowMultiple = true, valueSeparator = ";",
+                    options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         }
         add {
             param("StrideBuildPrerequisitesInstaller", "false")
