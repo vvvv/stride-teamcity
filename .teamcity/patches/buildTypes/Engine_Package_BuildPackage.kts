@@ -44,9 +44,6 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             param("StrideOfficialBuild", "false")
         }
         add {
-            param("XenkoSign", "false")
-        }
-        add {
             select("StridePlatforms", "Windows", label = "Platforms",
                     allowMultiple = true, valueSeparator = ";",
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
@@ -57,6 +54,9 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         add {
             checkbox("StrideGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
                       checked = "true", unchecked = "false")
+        }
+        add {
+            param("StrideSign", "false")
         }
     }
 
