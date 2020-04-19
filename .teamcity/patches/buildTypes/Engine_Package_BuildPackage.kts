@@ -50,13 +50,13 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         }
         add {
-            param("XenkoBuildPrerequisitesInstaller", "false")
-        }
-        add {
             param("XenkoOfficialBuild", "false")
         }
         add {
             param("XenkoSign", "false")
+        }
+        add {
+            param("StrideBuildPrerequisitesInstaller", "false")
         }
     }
 
