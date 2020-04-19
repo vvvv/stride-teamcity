@@ -12,6 +12,23 @@ To apply the patch, change the buildType with id = 'Engine_Package_BuildPackage'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
+    check(artifactRules == """
+        bin/packages/**/*.nupkg => bin/packages
+        bin/vsix/**/*.nupkg => bin/vsix
+        build/Xenko.build => build
+        build/Xenko.version => build
+        build/.nuget/NuGet.exe => build/.nuget
+    """.trimIndent()) {
+        "Unexpected option value: artifactRules = $artifactRules"
+    }
+    artifactRules = """
+        bin/packages/**/*.nupkg => bin/packages
+        bin/vsix/**/*.nupkg => bin/vsix
+        build/Stride.build => build
+        build/Stride.version => build
+        build/.nuget/NuGet.exe => build/.nuget
+    """.trimIndent()
+
     params {
         expect {
             checkbox("XenkoGraphicsApiDependentBuildAll", "true", label = "Build all graphics platforms",
