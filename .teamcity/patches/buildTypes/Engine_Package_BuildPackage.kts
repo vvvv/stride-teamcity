@@ -77,7 +77,8 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
     }
     steps {
         update<MSBuildStep>(0) {
-            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
+            path = """build\Stride.build"""
+            args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
         }
     }
 }
