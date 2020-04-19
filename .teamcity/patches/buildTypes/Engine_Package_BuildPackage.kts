@@ -31,12 +31,8 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
     """.trimIndent()
 
     params {
-        expect {
+        remove {
             checkbox("XenkoGraphicsApiDependentBuildAll", "true", label = "Build all graphics platforms",
-                      checked = "true", unchecked = "false")
-        }
-        update {
-            checkbox("XenkoGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
                       checked = "true", unchecked = "false")
         }
         expect {
@@ -57,6 +53,10 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         }
         add {
             param("StrideBuildPrerequisitesInstaller", "false")
+        }
+        add {
+            checkbox("StrideGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
+                      checked = "true", unchecked = "false")
         }
     }
 
