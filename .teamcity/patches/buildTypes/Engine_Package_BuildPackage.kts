@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.MSBuildStep
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.PowerShellStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.msBuild
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
@@ -80,5 +81,13 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             path = """build\Stride.build"""
             args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
         }
+        update<PowerShellStep>(1) {
+            scriptMode = script {
+                content = """"##teamcity[buildNumber '{0}']" -f (Get-Content .\Stride.version) | Write-Host"""
+            }
+        }
     }
+
+    expectDisabledSettings()
+    updateDisabledSettings("RUNNER_2")
 }
