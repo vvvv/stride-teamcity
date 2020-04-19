@@ -40,8 +40,16 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
                     allowMultiple = true, valueSeparator = ";",
                     options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         }
+        remove {
+            checkbox("env.XenkoOfficialBuild", "",
+                      checked = "true")
+        }
         add {
             param("StrideOfficialBuild", "false")
+        }
+        add {
+            checkbox("env.StrideOfficialBuild", "",
+                      checked = "true")
         }
         add {
             select("StridePlatforms", "Windows", label = "Platforms",
