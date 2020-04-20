@@ -30,7 +30,7 @@ changeVcsRoot(RelativeId("Xenko")) {
 
     (this as GitVcsRoot).apply {
         name = "vvvv-stride"
-        url = "git@github.com:vvvv/xenko.git"
+        url = "git@github.com:vvvv/stride.git"
         authMethod = uploadedKey {
             userName = ""
             uploadedKey = "teamcity_priv.ppk"
