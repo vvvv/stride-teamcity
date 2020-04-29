@@ -91,11 +91,11 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
         }
         insert(1) {
             msBuild {
-                name = "New build step"
-                path = """build\Stride.build"""
+                name = "Xenko build step"
+                path = """build\Xenko.build"""
                 toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
                 targets = "Package"
-                args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
+                args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoeGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
             }
         }
         update<PowerShellStep>(2) {
