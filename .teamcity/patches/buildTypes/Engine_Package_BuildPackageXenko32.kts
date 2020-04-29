@@ -49,7 +49,7 @@ create(RelativeId("Engine_Package"), BuildType({
             path = """build\Xenko.build"""
             toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
             targets = "Package"
-            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoeGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
+            args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
         }
         powerShell {
             name = "Update build number with actual package version"
