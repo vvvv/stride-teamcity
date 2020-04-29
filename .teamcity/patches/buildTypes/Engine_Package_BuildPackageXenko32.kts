@@ -35,7 +35,7 @@ create(RelativeId("Engine_Package"), BuildType({
         select("StridePlatforms", "Windows", label = "Platforms",
                 allowMultiple = true, valueSeparator = ";",
                 options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
-        checkbox("StrideGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
+        checkbox("XenkoGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
                   checked = "true", unchecked = "false")
         param("StrideSign", "false")
     }
