@@ -31,13 +31,13 @@ create(RelativeId("Engine_Package"), BuildType({
         param("XenkoBuildPrerequisitesInstaller", "false")
         checkbox("env.StrideOfficialBuild", "",
                   checked = "true")
-        select("StridePlatforms", "Windows", label = "Platforms",
-                allowMultiple = true, valueSeparator = ";",
-                options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
         checkbox("XenkoGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
                   checked = "true", unchecked = "false")
         param("XenkoOfficialBuild", "false")
         param("StrideSign", "false")
+        select("XenkoPlatforms", "Windows", label = "Platforms",
+                allowMultiple = true, valueSeparator = ";",
+                options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
     }
 
     vcs {
