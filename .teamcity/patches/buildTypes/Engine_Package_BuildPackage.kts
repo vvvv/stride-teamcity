@@ -89,7 +89,16 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             path = """build\Stride.build"""
             args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
         }
-        update<PowerShellStep>(1) {
+        insert(1) {
+            msBuild {
+                name = "New build step"
+                path = """build\Stride.build"""
+                toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
+                targets = "Package"
+                args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
+            }
+        }
+        update<PowerShellStep>(2) {
             scriptMode = script {
                 content = """"##teamcity[buildNumber '{0}']" -f (Get-Content .\Stride.version) | Write-Host"""
             }
