@@ -46,7 +46,6 @@ create(RelativeId("Engine_Package"), BuildType({
 
     steps {
         msBuild {
-            name = "Xenko build step"
             path = """build\Xenko.build"""
             toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
             targets = "Package"
