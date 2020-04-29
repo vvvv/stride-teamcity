@@ -34,7 +34,7 @@ create(RelativeId("Engine_Package"), BuildType({
         checkbox("XenkoGraphicsApiDependentBuildAll", "false", label = "Build all graphics platforms",
                   checked = "true", unchecked = "false")
         param("XenkoOfficialBuild", "false")
-        param("StrideSign", "false")
+        param("XenkoSign", "false")
         select("XenkoPlatforms", "Windows", label = "Platforms",
                 allowMultiple = true, valueSeparator = ";",
                 options = listOf("Windows", "UWP", "iOS", "Android", "Linux", "macOS"))
