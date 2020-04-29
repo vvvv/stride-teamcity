@@ -46,12 +46,6 @@ create(RelativeId("Engine_Package"), BuildType({
 
     steps {
         msBuild {
-            path = """build\Stride.build"""
-            toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
-            targets = "Package"
-            args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
-        }
-        msBuild {
             name = "Xenko build step"
             path = """build\Xenko.build"""
             toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
