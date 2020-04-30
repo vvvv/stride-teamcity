@@ -89,22 +89,11 @@ changeBuildType(RelativeId("Engine_Package_BuildPackage")) {
             path = """build\Stride.build"""
             args = """/nr:false /p:StridePlatforms="%StridePlatforms%" /p:StrideGraphicsApiDependentBuildAll=%StrideGraphicsApiDependentBuildAll% /p:StrideBuildPrerequisitesInstaller=%StrideBuildPrerequisitesInstaller% /p:StrideSign=%StrideSign% /p:StrideOfficialBuild=%StrideOfficialBuild%"""
         }
-        insert(1) {
-            msBuild {
-                name = "Xenko build step"
-                path = """build\Xenko.build"""
-                toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
-                targets = "Package"
-                args = """/nr:false /p:XenkoPlatforms="%XenkoPlatforms%" /p:XenkoGraphicsApiDependentBuildAll=%XenkoeGraphicsApiDependentBuildAll% /p:XenkoBuildPrerequisitesInstaller=%XenkoBuildPrerequisitesInstaller% /p:XenkoSign=%XenkoSign% /p:XenkoOfficialBuild=%XenkoOfficialBuild%"""
-            }
-        }
-        update<PowerShellStep>(2) {
+        update<PowerShellStep>(1) {
+            enabled = false
             scriptMode = script {
                 content = """"##teamcity[buildNumber '{0}']" -f (Get-Content .\Stride.version) | Write-Host"""
             }
         }
     }
-
-    expectDisabledSettings()
-    updateDisabledSettings("RUNNER_2")
 }
